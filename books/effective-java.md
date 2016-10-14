@@ -16,3 +16,22 @@
 * Cons
  1. More verbose
  2. Slight penalty in constructing a builder object in addition to the required class object
+
+#Item 3,4 : Use private constructor for singleton or to avoid instantiation
+* Some classes are just a collection of static methods and it doesn't make much sense to instantiate them. If you don't include any constructor, the default constructor will be added to the class. To avoid, declare a private constructor.
+* Singletons can be declared using a private constructor with a public static field /method. Method is more flexible since you can later change it to be non-singleton without changing any clients
+* Easily the safest way to create singletons is to use enums. Will protect against serializabilty and reflection attacks
+
+# Item 5 : don't construct objects unless absolutey needed
+* Constucting a new object in a loop each time when a single declaration would do is expensive
+* Similar examples include using  s = new String("xyz") instead of s = "xyz"
+* Autoboxing/ unboxing is also another example of creating extra objects
+
+# Item 6 : null a reference when object is no longer needed
+* Its actually better to avoid this by declaring an object in the tightest possible scope, so it will automatically fall out of scope
+* But sometimes a class may manage its own memory, for instance a stack allocates an array as its internal storage and expands or shrinks as needed. Now eventhough an object was popped out of the array, the array entry still maintains a reference and thsi can't be GC'd. Thsu you should always null it. 
+
+# Item 7 : Avoid using finalize
+* There is no guarantee when finalize is actually executed, so it is better to free important resources as soon as they are not required. Otherwise you might run out of resources. 
+* Sometimes it may be necesarry to use finalize when working with native objects, but it should be used with care.
+8 Instead it is better to provide explicit terminaiton methods in the resource class, and this can be called in the finally block. For e.g most streams and files have a close method.
