@@ -35,3 +35,29 @@
 * There is no guarantee when finalize is actually executed, so it is better to free important resources as soon as they are not required. Otherwise you might run out of resources. 
 * Sometimes it may be necesarry to use finalize when working with native objects, but it should be used with care.
 8 Instead it is better to provide explicit terminaiton methods in the resource class, and this can be called in the finally block. For e.g most streams and files have a close method.
+
+# Ch2
+* Mainly about overriding methods common in all objects - equals, hashCode, toString, clone, finalize
+
+# Item 8 : override equals
+* Only exception is if the class has a private constructor, or is non-instantiable, or the superclass override is sufficient, or all objects in the class are guaranteed to be unique, e.g thread class
+* Important that the equals method follows contract of reflexivity, symmetry and transitivity
+* Because of this it is often difficult to add a value member in the subclass, since it may violate symmetry
+* The solution in this case is to prefer composition over inheritance
+* Also its important that equals method should never throw any exception
+* Always remember equals method takes as argument Object o and not Myclass o , otherwise it won't override the equals method in the object
+* Typically 3 steps
+** this == o return true
+** if (! o instanceof Myclass) return false
+** Myclass t = (Myclass) o
+** custom equality comparison between value fields of o and t
+
+# Item 9 : always override hashCode when you override equals
+* Otherwise hashmap, hashset other such generics will not work as expected
+* usually you may compose hashcodes of different value members, 
+* Its important that if 2 objects are equal via equals, they have the same hashcode
+
+# Item 10 : override toString
+* Makes it easy for programmers when printing out debug info
+* either specify the format, will make it easy to parse elsewhere but tie you in a particular format, or don't
+
