@@ -61,3 +61,12 @@
 * Makes it easy for programmers when printing out debug info
 * either specify the format, will make it easy to parse elsewhere but tie you in a particular format, or don't
 
+# Item 11 : Never use clone
+* clone() and Cloneable interface are bad.
+* Prefer using copy constructor / static factory instead of clone.
+
+# Item 12 : Not required but implement Comparable
+* Comparable is a parametrized interface
+* implement int compareTo(MyClass c){...}
+* Will make it easier to take advantage of collections like TreeSet and other sorting capabilities.
+
