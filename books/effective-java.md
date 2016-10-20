@@ -1,3 +1,5 @@
+# Ch 1
+
 # Item 1 : use static factories instead of constructors
 * Pros
  1. Can have multiple methods with identical parameters but different behaviour, which isn't true for constructors
@@ -69,4 +71,12 @@
 * Comparable is a parametrized interface
 * implement int compareTo(MyClass c){...}
 * Will make it easier to take advantage of collections like TreeSet and other sorting capabilities.
+
+# Ch 3
+
+# Item 13, 14 : About accessibility
+* private members can only be accessed by a class (not its sub classes)
+* no access specification implies package private
+* inherited classes cannot override a method in the parent class but have it at a stricter access level
+* all overrides of interface methods are always public
 
