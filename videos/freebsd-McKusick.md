@@ -1,4 +1,4 @@
-* Video link : (Series on Safari) [https://www.safaribooksonline.com/library/view/introduction-to-the/9780134306049/part1.html]
+* Video link : (Series on Safari) [https://www.safaribooksonline.com/library/view/introduction-to-the/9780134306049/]
 * Speaker : Marshall Kirk McKusick
 
 # Processes
